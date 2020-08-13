@@ -11,10 +11,6 @@ class App extends Component {
     await this.loadbBlockchainData()
   }
 
-  // async componentDidMount() {
-  
-  // }
-
   async loadWeb3() {
     if (window.ethereum) {
       window.web3 = new Web3(window.ethereum)
@@ -53,20 +49,6 @@ class App extends Component {
       window.alert('Smart Contract not deployed to network')
     }
   }
-
-  // changeName = event => {
-  //     this.setState({name: event.target.value})
-  //   };
-
-  // changeClub = event => {
-  //     this.setState({club: event.target.value})
-  //   };
-  // changePosition = event => {
-  //     this.setState({position: event.target.value})
-  //   };
-  // changeCountry = event => {
-  //     this.setState({country: event.target.value})
-  //   };
 
   changeKeyword = event => {
     this.setState({keyword: event.target.value})
@@ -136,76 +118,7 @@ class App extends Component {
     }
   }
   render() {
-    // return (
-    //   <div>
-    //     <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    //       <a
-    //         className="navbar-brand col-sm-3 col-md-2 mr-0"
-    //         href="http://www.dappuniversity.com/bootcamp"
-    //         target="_blank"
-    //         rel="noopener noreferrer"
-    //       >
-    //         FifaToken
-    //       </a>
-    //       <ul className="navbar-nav px-3">
-    //         <li className="nav-item text-nowrap d-none d-sm-none d-sm-block">
-    //           <small className="text-white"><span id="account">{this.state.account}</span></small>
-    //         </li>
-    //       </ul>
-    //     </nav>
-    //     <div className="container-fluid mt-5">
-    //       <div className="row">
-    //         <main role="main" className="col-lg-12 d-flex text-center">
-    //           <div className="content mr-auto ml-auto">
-    //             <h1> Issue Token </h1>
-    //             <form onSubmit={(event) => {
-    //               event.preventDefault()
-    //               let player = {
-    //                 name:this.state.name,
-    //                 position:this.state.position,
-    //                 club:this.state.club,
-    //                 country:this.state.country}
-    //               this.mint(player)
-    //             }}>
-    //               <input type = 'text'
-    //               className='form-control mb-2'
-    //               placeholder='Enter name (e.g. messi)'
-    //               onChange = {this.changeName}
-    //               />
-    //               <input type = 'text'
-    //               className='form-control mb-2'
-    //               placeholder='Enter position (e.g. forward)'
-    //               onChange = {this.changePosition}
-    //               />
-    //               <input type = 'text'
-    //               className='form-control mb-2'
-    //               placeholder='Enter club (e.g. barcelona)'
-    //               onChange = {this.changeClub}
-    //               />
-    //               <input type = 'text'
-    //               className='form-control mb-2'
-    //               placeholder='Enter country (e.g. argentina)'
-    //               onChange = {this.changeCountry}
-    //               />
-    //               <input type='submit' className='btn btn-block btn-primary' value='MINT'/>
-    //               </form>
-    //           </div>
-    //         </main>
-    //       </div>
-    //       <hr/>
-    //       <div className="row text-center">
-    //       {this.state.players.map((newplayer,key) => {
-    //         return ( <div key = {key} className="col-md-3 mb-3">
-    //           <div className="token"></div>
-    //           <div>{newplayer}</div>
-    //         </div>)
-    //       })}
-    //       </div>
-    //     </div>
-    //   </div>
-    // );
-
-    // if(this.state.keywordEntered = false){
+    
       return (
         <div>
           <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
@@ -223,7 +136,7 @@ class App extends Component {
           <h1> Look Up Player </h1>
           <form onSubmit={(event) => {
             event.preventDefault()
-            this.state.keywordEntered = true
+            this.setState(keywordEntered: true)
             this.lookUpPlayer()
           }}>
           <input type = 'text'
@@ -248,7 +161,8 @@ class App extends Component {
             this.state.matches.map((newplayer,key) => {
             return ( <div className="col-md-3 mb-3">
               <div><input onClick={(event) => {
-                this.setState({selectedPlayer: event.target.value })
+              	let integer = parseInt(event.target.value)
+                this.setState({selectedPlayer: integer })
               }} type='submit' value={key}/>{newplayer}</div>
             </div>)
           })}
@@ -271,21 +185,6 @@ class App extends Component {
           </div>
         </div>
         );
-     // } 
-     //else {
-  //     let rows = [];
-  // for(let i = 0; i < this.state.matches.api.results; i++){
-  //   rows.push(this.state.matches.api.players[i].player_name + ', ' + this.state.matches.api.players[i].position + ', ' + this.state.matches.api.players[i].nationality);
-  // }
-
-  // return (
-  //   <ol>
-  //     {rows.map((player, index) => (
-  //       <li key = {index}>{player}</li>
-  //     ))}
-  //   </ol>
-  // );
-  //   }
 
   }
 }
