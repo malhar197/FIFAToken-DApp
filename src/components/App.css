@@ -1,1 +1,29 @@
-/* Styles go here */
+body {
+ background-image: url("background.jpeg");
+ background-color: #cccccc;
+ background-position: center;
+ background-repeat: no-repeat;
+}/* Styles go here */
+
+#minted {
+	margin-right: 0px;
+	background-color: #fcba03;
+	border-radius: 25px;
+}
+
+#mtable {
+	border-radius: 25px;
+}
+
+#searching {
+	/*background-color: #fcba03;*/
+	border-radius: 25px;
+}
+
+#stable {
+	border-radius: 25px;
+}
+
+.roundedRows {
+	border-collapse: collapse;
+}

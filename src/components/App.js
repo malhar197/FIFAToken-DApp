@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Web3 from 'web3';
 import './App.css';
 import FifaToken from '../abis/FifaToken.json';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Table } from 'react-bootstrap';
+import TableScrollbar from 'react-table-scrollbar';
 var unirest = require("unirest");
 
 class App extends Component {
@@ -136,7 +139,7 @@ class App extends Component {
           <h1> Look Up Player </h1>
           <form onSubmit={(event) => {
             event.preventDefault()
-            this.setState(keywordEntered: true)
+            this.state.keywordEntered = true
             this.lookUpPlayer()
           }}>
           <input type = 'text'
@@ -149,7 +152,7 @@ class App extends Component {
                 <div className="row text-center">
             <form onSubmit={(event) => {
             event.preventDefault()
-            this.setState({keywordEntered: false})
+            this.state.keywordEntered = false
                   let player = {
                     name:this.state.response.api.players[this.state.selectedPlayer].player_name,
                     position:this.state.response.api.players[this.state.selectedPlayer].position,
@@ -157,27 +160,76 @@ class App extends Component {
                     country:this.state.response.api.players[this.state.selectedPlayer].nationality}
             this.mint(player)
           }}>
+          <br/>
+          <br/>
+          {/*
+          <div className="row text-center">
            {
             this.state.matches.map((newplayer,key) => {
-            return ( <div className="col-md-3 mb-3">
-              <div><input onClick={(event) => {
+            return ( 
+              <div className="col-md-3 mb-3"><input onClick={(event) => {
               	let integer = parseInt(event.target.value)
-                this.setState({selectedPlayer: integer })
-              }} type='submit' value={key}/>{newplayer}</div>
-            </div>)
+                this.state.selectedPlayer = integer
+              }} type='submit' className='btn btn-block btn-secondary' value={key}/>{newplayer}</div>
+            )
           })}
+          </div>
+        */}
+        <div id ="searching">
+        <TableScrollbar rows={5}>
+        <Table id="stable" hover variant="dark" responsive>
+        <tr>
+        <th> # </th>
+        <th> Player Info </th>
+        </tr>
+        <tbody>
+        {
+            this.state.matches.map((newplayer,key) => {
+            return ( 
+              <tr className="roundedRows">
+              <td className="roundedRows"><input onClick={(event) => {
+                let integer = parseInt(event.target.value)
+                this.state.selectedPlayer = integer
+              }} type='submit' className='btn btn-block btn-secondary' value={key}/></td>
+              <td className="roundedRows">{newplayer}</td>
+              </tr>
+            )
+          })}
+        </tbody>
+        </Table>
+        </TableScrollbar>
+        </div>
           </form>
           </div>
           </div>
           <div>
           <h1>Minted tokens</h1>
-          <div>
+          <div className="row text-center" id="minted">
+          <TableScrollbar>
+          <Table id = "mtable" hover variant="dark" responsive>
+        <tr>
+        <th> Name </th>
+        <th> Position </th>
+        <th> Country </th>
+        </tr>
+        <tbody>
           {this.state.players.map((mintedplayer,key) => {
             return(
-              <ul>
-              <li key = {key}> {mintedplayer.name}, {mintedplayer.position}, {mintedplayer.country} </li>
-              </ul>)
+              <tr key = {key}>
+              <td>
+               {mintedplayer.name}
+              </td>
+              <td>
+              {mintedplayer.position}
+              </td> 
+              <td>
+              {mintedplayer.country}
+              </td>
+              </tr>)
           })}
+          </tbody>
+          </Table>
+          </TableScrollbar>
           </div>
           </div>
           </main>
