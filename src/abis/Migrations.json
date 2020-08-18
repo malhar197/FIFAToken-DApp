@@ -1415,12 +1415,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xAF505A9d6268D067408cCFFF4E906ecd6cb19D8f",
-      "transactionHash": "0xf44daebc6009f785f4855da2926153bd33f310fd2459282cb5414904f4a00634"
+      "address": "0x8e6F66c8aFD783AB07800872B353A62c10Ba4c49",
+      "transactionHash": "0x06a99dded7bf650e0fc9db13fda4d6e9e08bbec8dcc02929a5726866d39160ca"
     }
   },
   "schemaVersion": "3.1.0",
-  "updatedAt": "2020-08-15T15:59:13.688Z",
+  "updatedAt": "2020-08-18T16:17:26.191Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
